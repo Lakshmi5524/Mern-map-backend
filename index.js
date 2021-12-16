@@ -1,9 +1,14 @@
+const port = process.env.PORT || 5000
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const userRoute = require("./routes/users");
 const pinRoute = require("./routes/pins");
+const cors = requires('cors')
+app.use(cors({
+	origin: "*"
+}))
 
 dotenv.config();
 
@@ -27,7 +32,6 @@ if (process.env.NODE_ENV === "production") {
 	})
 }
 
-app.listen(process.env.PORT || 8800);
-// app.listen(8800, () => {
-// 	console.log("Backend server is running!");
-// });
+app.listen(port, () => {
+	console.log(`Backend server is running in port ${port}`);
+});
