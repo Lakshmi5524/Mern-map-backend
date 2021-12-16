@@ -19,6 +19,14 @@ mongoose
 app.use("/api/users", userRoute);
 app.use("/api/pins", pinRoute);
 
+//Server Production Assests
+if (process.env.NODE_ENV === "production") {
+	app.use('/', express.static(path.join("client/build")))
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+	})
+}
+
 app.listen(process.env.PORT || 8800);
 // app.listen(8800, () => {
 // 	console.log("Backend server is running!");
