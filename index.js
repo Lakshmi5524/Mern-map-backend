@@ -5,10 +5,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const userRoute = require("./routes/users");
 const pinRoute = require("./routes/pins");
-// const cors = requires('cors')
-// app.use(cors({
-// 	origin: "*"
-// }))
+const cors = require('cors')
+app.use(cors())
 
 dotenv.config();
 
